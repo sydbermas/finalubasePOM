@@ -41,8 +41,6 @@ while(cap.isOpened()):
 				print('Style and Levels are not accepted.')
 				quit()
 				
-				root.destroy()
-				
 			else:
 				image = 'SavedImages\\imageCap.jpg'
 				cv.imwrite(image, frame)
@@ -51,10 +49,7 @@ while(cap.isOpened()):
 					imageToBeInspected = 'SavedImages\\imageCap.jpg'    #acting as camera
 					poms = [glob.glob(str(name)+'\\A\\*.jpg')]
 					
-					# pomOffset =[[0,50,50,50]]
-					
-					# pomIndex = 0
-					pixelToInch = 16 #camera height - 39 inches to 40
+					pixelToInch = 16  #camera height - 39 inches to 40
 					
 					resultA = []
 
@@ -93,10 +88,10 @@ while(cap.isOpened()):
 						
 						distA = math.sqrt((Atl[1] - Atl[0])**2 + (Atl2[1] - Atl2[0])**2)
 						A = (distA/pixelToInch)
-						cv2.circle(frame, (Atl[0],Atl[1]), 5, (0,0,255), -1)
-						cv2.circle(frame, (Atl2[0],Atl2[1]),5, (0,0,255),-1)
-						cv.line(frame, (Atl[0],Atl[1]), (Atl2[0],Atl2[1]), (0,0,255), 1)
-						cv2.putText(frame,("A:"+str(round(A))+"inches"),(Atl[0],Atl2[1]),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,255),1)
+						cv2.circle(frame, (Atl[0],Atl[1]), 5, (0,0,0), -1)
+						cv2.circle(frame, (Atl2[0],Atl2[1]),5, (0,0,0),-1)
+						cv.line(frame, (Atl[0],Atl[1]), (Atl2[0],Atl2[1]), (0,0,0), 2)
+						cv2.putText(frame,("A:"+str(round(A,2))+"inches"),(Atl[0],Atl2[1]),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,0),2)
 						
 				except (RuntimeError, TypeError, NameError):
 					pass
@@ -104,10 +99,7 @@ while(cap.isOpened()):
 					
 					imageToBeInspected = 'SavedImages\\imageCap.jpg'    #acting as camera
 					poms = [glob.glob(str(name)+'\\B\\*.jpg')]
-					
-					# pomOffset =[[0,50,50,50]]
-					
-					# pomIndex = 0
+				
 					pixelToInch = 16 #camera height - 39 inches to 40
 					
 					resultB = []
@@ -131,26 +123,24 @@ while(cap.isOpened()):
 						res = cv.matchTemplate(img,templAB,methodAB)
 						res2 = cv.matchTemplate(img,templBA,methodAB)
 						
-						
 						min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
 						min_val2, max_val2, min_loc2, max_loc2 = cv.minMaxLoc(res2)
 						
-						# print(min_val, max_val, min_loc, max_loc)
 						# If the method is TM_SQDIFF or TM_SQDIFF_NORMED, take minimum
 						if methodAB in [cv.TM_SQDIFF, cv.TM_SQDIFF_NORMED]:
 							top_left = min_loc
 							top_left2 = min_loc2
-							
+
 						else:
 							Btl = max_loc
 							Btl2 = max_loc2
 						
 						distB = math.sqrt((Btl[1] - Btl2[1])**2 + (Btl[0] - Btl2[0])**2)
 						B = (distB/pixelToInch)
-						cv2.circle(frame, (Btl[0],Btl[1]), 5, (0,0,255), -1)
-						cv2.circle(frame, (Btl2[0],Btl2[1]),5, (0,0,255),-1)
-						cv.line(frame, (Btl[0],Btl[1]), (Btl2[0],Btl2[1]), (0,0,255), 1)
-						cv2.putText(frame,("B:"+str(round(B))+"inches"),(Btl[0],Btl2[1]),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,255),1)
+						cv2.circle(frame, (Btl[0],Btl[1]), 5, (0,255,0), -1)
+						cv2.circle(frame, (Btl2[0],Btl2[1]),5, (0,255,0),-1)
+						cv.line(frame, (Btl[0],Btl[1]), (Btl2[0],Btl2[1]), (0,255,0), 1)
+						cv2.putText(frame,("B:"+str(round(B,2))+"inches"),(Btl2[0],Btl2[1]),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,255,0),1)
 						
 						
 				except (RuntimeError, TypeError, NameError):
@@ -158,11 +148,9 @@ while(cap.isOpened()):
 				
 
 				cv.imshow('output',frame)
-						
-				
 	else:
 		break
-		
+	
 
 cap.release()
 

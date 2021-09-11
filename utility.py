@@ -48,3 +48,4 @@ def findMatch(gray_frame,descriptors,names,thresh=15):
 		if max(scores)>thresh:
 			name = names[scores.index(max(scores))]
 	return name
+
