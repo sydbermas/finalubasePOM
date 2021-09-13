@@ -151,7 +151,7 @@ while(cap.isOpened()):
 	else:
 		break
 	
-
+	
 cap.release()
 
 
