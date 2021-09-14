@@ -1,6 +1,8 @@
 import math
+from PIL.ImageOps import grayscale
 import cv2
 import pyautogui
+
 
 class DrawLineWidget(object):
     def __init__(self):
@@ -37,6 +39,9 @@ class DrawLineWidget(object):
     def show_image(self):
         return self.clone
 
+s = pyautogui.locateOnScreen('7W82995\A\\a.jpg', confidence =.8)
+print(s)
+
 if __name__ == '__main__':
     draw_line_widget = DrawLineWidget()
    
@@ -50,3 +55,4 @@ if __name__ == '__main__':
         if key == ord('q'):
             cv2.destroyAllWindows()
             exit(1)
+
