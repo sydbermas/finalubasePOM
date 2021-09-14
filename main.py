@@ -85,6 +85,8 @@ while(cap.isOpened()):
 						else:
 							Atl = max_loc
 							Atl2 = max_loc2
+
+							
 						
 						distA = math.sqrt((Atl[1] - Atl[0])**2 + (Atl2[1] - Atl2[0])**2)
 						A = (distA/pixelToInch)
@@ -92,6 +94,7 @@ while(cap.isOpened()):
 						cv2.circle(frame, (Atl2[0],Atl2[1]),5, (0,0,0),-1)
 						cv.line(frame, (Atl[0],Atl[1]), (Atl2[0],Atl2[1]), (0,0,0), 2)
 						cv2.putText(frame,("A:"+str(round(A,2))+"inches"),(Atl[0],Atl2[1]),cv2.FONT_HERSHEY_SIMPLEX,0.5,(0,0,0),2)
+
 						
 				except (RuntimeError, TypeError, NameError):
 					pass
