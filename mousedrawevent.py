@@ -2,14 +2,17 @@ import math
 from PIL.ImageOps import grayscale
 import cv2
 import pyautogui
-
-
+import numpy as np
+import glob
+import auto
 class DrawLineWidget(object):
+   
     def __init__(self):
         self.original_image = cv2.imread('SavedImages\imageCap.jpg')
         self.clone = self.original_image.copy()
 
         cv2.namedWindow('image')
+        
         cv2.setMouseCallback('image', self.extract_coordinates)
 
         # List to store start/end points
@@ -19,6 +22,7 @@ class DrawLineWidget(object):
         # Record starting (x,y) coordinates on left mouse button click
         if event == cv2.EVENT_LBUTTONDOWN:
             self.image_coordinates = [(x,y)]
+            
 
         # Record ending (x,y) coordintes on left mouse bottom release
         elif event == cv2.EVENT_LBUTTONUP:
@@ -30,25 +34,24 @@ class DrawLineWidget(object):
 
             # Draw line
             cv2.line(self.clone, self.image_coordinates[0], self.image_coordinates[1], (0,0,0), 2)
-            cv2.imshow("image", self.clone) 
+            cv2.imshow("image", self.clone)
+             
 
         # Clear drawing boxes on right mouse button click
         elif event == cv2.EVENT_RBUTTONDOWN:
             self.clone = self.original_image.copy()
-
+            
     def show_image(self):
-        return self.clone
 
-s = pyautogui.locateOnScreen('7W82995\A\\a.jpg', confidence =.8)
-print(s)
+        return self.clone
 
 if __name__ == '__main__':
     draw_line_widget = DrawLineWidget()
-   
-    
+        
     while True:
         cv2.imshow('image', draw_line_widget.show_image())
         
+        auto.bot()
         key = cv2.waitKey(1)
 
         # Close program with keyboard 'q'
