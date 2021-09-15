@@ -51,11 +51,14 @@ if __name__ == '__main__':
     while True:
         cv2.imshow('image', draw_line_widget.show_image())
         
-        auto.bot()
+        start = cv2.waitKey(1)
         key = cv2.waitKey(1)
-
+        
+        if key == ord(' '):
+            auto.bot()
         # Close program with keyboard 'q'
         if key == ord('q'):
+            auto.bot()
             cv2.destroyAllWindows()
             exit(1)
 

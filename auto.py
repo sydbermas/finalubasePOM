@@ -6,7 +6,7 @@ import cv2
 def bot():
     pyautogui.screenshot('screenshot.jpg')  
     imageToBeInspected = 'screenshot.jpg'  
-    poms = [glob.glob('7W82995\B\\*.jpg')]
+    poms = [glob.glob('7W82995\A\\*.jpg')]
 
     for pom in poms:
 
@@ -38,5 +38,5 @@ def bot():
         else:
             Btl = max_loc
             Btl2 = max_loc2
-
+    print(Btl[0],Btl[1])
     pyautogui.move(Btl[0],Btl[1],0.5)
