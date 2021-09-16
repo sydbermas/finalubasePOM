@@ -32,14 +32,18 @@ while(cap.isOpened()):
 		cv2.putText(frame,name,(20,20),cv2.FONT_HERSHEY_COMPLEX,0.8,(0,0,0),2)
 		
 		cv2.imshow("Ubase APM",frame)
-		if cv2.waitKey(1)==ord(' '):
+
+		start = cv2.waitKey(1)
+		key = cv2.waitKey(1)
+
+		if start==ord(' '):
 			root = Tk()
 			root.withdraw()
+			
 			if name == "":
 				
 				tkinter.messagebox.showinfo(title='Image Error', message='Style and Levels are not accepted.')
 				print('Style and Levels are not accepted.')
-				quit()
 				
 			else:
 				image = 'SavedImages\\imageCap.jpg'
@@ -148,11 +152,16 @@ while(cap.isOpened()):
 						
 				except (RuntimeError, TypeError, NameError):
 					pass
-				
-
+		
 				cv.imshow('output',frame)
+
+		if key==ord('q'):
+			cv2.destroyAllWindows()
+			exit(1)
+
 	else:
 		break
+
 	
 	
 cap.release()

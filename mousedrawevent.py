@@ -55,7 +55,7 @@ if __name__ == '__main__':
         start = cv2.waitKey(1)
         key = cv2.waitKey(1)
         
-        if key == ord(' '):
+        if start == ord(' '):
             exec(open('auto.py').read())
         # Close program with keyboard 'q'
         if key == ord('q'): 
