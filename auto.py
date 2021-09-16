@@ -97,7 +97,7 @@ if __name__=="__main__":
 
     imgAutoCick("7W82995\A\\a.jpg", pyautogui.doubleClick)
     imgAutoCick("7W82995\A\\b.jpg", pyautogui.rightClick)
-    time.sleep(0.2)
+    
 
         
     
