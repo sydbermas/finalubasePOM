@@ -95,8 +95,8 @@ if __name__=="__main__":
     # pyautogui.press('winleft')
     # pyautogui.PAUSE = 1
 
-    imgAutoCick("7W82995\A\\a.jpg", pyautogui.doubleClick)
-    imgAutoCick("7W82995\A\\b.jpg", pyautogui.rightClick)
+    imgAutoCick("7W82497\A\\a.jpg", pyautogui.doubleClick)
+    imgAutoCick("7W82497\A\\b.jpg", pyautogui.rightClick)
     
     
     
