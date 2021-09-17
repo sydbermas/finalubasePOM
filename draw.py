@@ -4,7 +4,7 @@ import cv2
 import pyautogui
 import numpy as np
 import glob
-import auto
+import clicker
 import time
 
 class DrawLineWidget(object):

@@ -49,54 +49,10 @@ def imgAutoCick(tempFile, whatDo, debug=False):
     pyautogui.moveTo(top+h/2, left+w/2)
     whatDo(x)
 
-    # if debug:
-
-    #     img = cv2.imread("screenshot.png",1)
-
-    #     cv2.rectangle(img,top_left, bottom_right, (0,0,255), 2)
-
-    #     img = cv2.resize(img, (0, 0), fx=0.5, fy=0.5, interpolation=cv2.INTER_NEAREST)
-    #     cv2.imshow("processed",img)
-    #     cv2.waitKey(0)
-
-    #     cv2.destroyAllWindows()
-    # os.remove("screenshot.png")
-
-# def simple_example_baidu():
-  
-#     # time.sleep(2)
-#     # imgAutoCick("7W82995\A\\b.jpg", pyautogui.dragTo)
-
-#     # time.sleep(2)
-#     # imgAutoCick("7W82995\A\\b.jpg", pyautogui.mouseUp)
-
-#     # time.sleep(1)
-#     # pyautogui.typewrite("meinv1")
-
-#     # time.sleep(1)
-#     # imgAutoCick("baidu_tu/test4.png", pyautogui.click)
- 
-#     # time.sleep(1)
-#     # imgAutoCick("baidu_tu/test5.png", pyautogui.click)
-
-#     m, n = pyautogui.size()
-#     pyautogui.moveTo(x=m/2, y=n/2)
-
-#     for i in range(100):
-#         time.sleep(0.5)
-#         pyautogui.scroll(-120) 
-
-if __name__=="__main__":
-  
-    # Minimize = win32gui.GetForegroundWindow()
-    # win32gui.ShowWindow(Minimize, win32con.SW_MINIMIZE)
-
-    # pyautogui.PAUSE = 1
-    # pyautogui.press('winleft')
-    # pyautogui.PAUSE = 1
-
+def measurer_bot():
     imgAutoCick("7W82497\A\\a.jpg", pyautogui.doubleClick)
     imgAutoCick("7W82497\A\\b.jpg", pyautogui.rightClick)
-    
-    
-    
+if __name__=="__main__":
+    measurer_bot()
+
+

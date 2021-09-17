@@ -15,13 +15,13 @@ from math import dist
 from scipy.spatial import distance
 from collections import namedtuple
 from itertools import product
-import utility
+import stylerecog
 import sys
 import cv2
 import imutils
 
-images,names = utility.readImages()
-descriptors = utility.getDescriptors(images)
+images,names = stylerecog.readImages()
+descriptors = stylerecog.getDescriptors(images)
 # cap=cv2.VideoCapture("test.mp4")	#using video
 cap=cv2.VideoCapture(0,cv2.CAP_DSHOW)				#Runtime camera
 while(cap.isOpened()):
@@ -29,7 +29,7 @@ while(cap.isOpened()):
 	if success:
 		frame=imutils.resize(frame,width=640)
 		gray_frame=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
-		name = utility.findMatch(gray_frame,descriptors,names)
+		name = stylerecog.findMatch(gray_frame,descriptors,names)
 		cv2.putText(frame,name,(20,20),cv2.FONT_HERSHEY_COMPLEX,0.8,(0,0,0),2)
 		
 		cv2.imshow("Ubase APM",frame)
@@ -53,9 +53,7 @@ while(cap.isOpened()):
 
 			elif '' in name:
 				image = 'SavedImages\\imageCap.jpg'
-			
-					
-				
+				cv.imwrite(image, frame)
 				
 		elif key==ord('q'):
 			cv2.destroyAllWindows(frame)
@@ -64,3 +62,4 @@ while(cap.isOpened()):
 		break
 
 cap.release()
+
