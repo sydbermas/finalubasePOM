@@ -1,4 +1,5 @@
 import math
+from typing import IO
 from PIL.ImageOps import grayscale
 import cv2
 import pyautogui
@@ -6,16 +7,15 @@ import numpy as np
 import glob
 import clicker
 import time
-
 class DrawLineWidget(object):
    
     def __init__(self):
         self.original_image = cv2.imread('SavedImages\imageCap.jpg')
         self.clone = self.original_image.copy()
 
-        cv2.namedWindow('image')
+        cv2.namedWindow('AutoMeasure')
         
-        cv2.setMouseCallback('image', self.extract_coordinates)
+        cv2.setMouseCallback('AutoMeasure', self.extract_coordinates)
 
         # List to store start/end points
         self.image_coordinates = []
@@ -37,7 +37,7 @@ class DrawLineWidget(object):
             # Draw line
             cv2.line(self.clone, self.image_coordinates[0], self.image_coordinates[1], (0,0,0), 1)
             cv2.putText(self.clone,("POMID:"+str(round(dist,2))+"inches"),(self.image_coordinates[0]),cv2.FONT_HERSHEY_SIMPLEX,0.4,(0,0,0),1)
-            cv2.imshow("image", self.clone)
+            cv2.imshow("AutoMeasure", self.clone)
              
 
         # Clear drawing boxes on right mouse button click
@@ -45,22 +45,27 @@ class DrawLineWidget(object):
             self.clone = self.original_image.copy()
             
     def show_image(self):
-
+        
         return self.clone
 
 if __name__ == '__main__':
     draw_line_widget = DrawLineWidget()
-        
+    pyautogui.typewrite("s")
     while True:
-        cv2.imshow('image', draw_line_widget.show_image())
-       
-        start = cv2.waitKey(1)
-        if start == ord(' '): 
-            exec(open("auto.py").read())
-        key = cv2.waitKey(1)
+        cv2.imshow('AutoMeasure', draw_line_widget.show_image())
+        cv2.moveWindow("AutoMeasure", 40,30)
 
+        key = cv2.waitKey(1)
+        start = cv2.waitKey(1)
+        if key == ord('s'):
+            exec(open("clicker.py").read())
         # Close program with keyboard 'q'
-        if key == ord('q'): 
-            cv2.destroyAllWindows()
-            exit(1)
+        if key == ord(' '):
+            cv2.destroyWindow("AutoMeasure")
+            break
+        
+        
+        
+            
+
 

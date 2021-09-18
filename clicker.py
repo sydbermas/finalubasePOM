@@ -36,8 +36,9 @@ def imgAutoCick(tempFile, whatDo, debug=False):
     w, h = img_template.shape[::-1]
 
     res = cv2.matchTemplate(gray,img_template,cv2.TM_SQDIFF)
-
+    
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+    
 
     top = min_loc[0]
     left = min_loc[1]
@@ -49,9 +50,11 @@ def imgAutoCick(tempFile, whatDo, debug=False):
     pyautogui.moveTo(top+h/2, left+w/2)
     whatDo(x)
 
-def measurer_bot():
+def measurer_bot(): # Acting list images from google sheet
     imgAutoCick("7W82497\A\\a.jpg", pyautogui.doubleClick)
     imgAutoCick("7W82497\A\\b.jpg", pyautogui.rightClick)
+    imgAutoCick("7W82497\B\\a.jpg", pyautogui.doubleClick)
+    imgAutoCick("7W82497\B\\b.jpg", pyautogui.rightClick)
 if __name__=="__main__":
     measurer_bot()
 

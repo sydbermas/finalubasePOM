@@ -33,7 +33,7 @@ while(cap.isOpened()):
 		cv2.putText(frame,name,(20,20),cv2.FONT_HERSHEY_COMPLEX,0.8,(0,0,0),2)
 		
 		cv2.imshow("Ubase APM",frame)
-
+		cv2.moveWindow("Ubase APM", 40,30)
 		start = cv2.waitKey(1)
 		key = cv2.waitKey(1)
 
@@ -50,11 +50,17 @@ while(cap.isOpened()):
 				image = 'SavedImages\\imageCap1.jpg'
 				cv.imwrite(image, frame)
 				
-
 			elif '' in name:
 				image = 'SavedImages\\imageCap.jpg'
 				cv.imwrite(image, frame)
 				
+				try:
+					exec(open("draw.py").read())
+				except:
+					print("drawing err")
+			else:
+				tkinter.messagebox.showinfo(title='Image Error', message='Check styles Front, Back or Sides.')
+				 			
 		elif key==ord('q'):
 			cv2.destroyAllWindows(frame)
 			exit(1)
