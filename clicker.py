@@ -3,6 +3,10 @@ import cv2
 import pyautogui
 import os, time
 import win32gui, win32con
+from PIL import Image
+from PIL import ImageChops
+
+import datetime
 
 def imgAutoCick(tempFile, whatDo, debug=False):
     '''
@@ -15,7 +19,7 @@ def imgAutoCick(tempFile, whatDo, debug=False):
                 pyautogui._mouseMoveDrag(w/2, h/2)
                 pyautogui.mouseUp()
                 pyautogui.mouseDown(w/2, h/2, 1, 0, 2)
-                pyautogui.doubleClick(w/2, h/2,)  # Double left click
+                pyautogui.doubleClick(w/2, h/2)  # Double left click
                 pyautogui.click()
                 pyautogui.rightClick(w/2, h/2) # Right-click
                 pyautogui.middleClick() # Middle click
@@ -30,7 +34,7 @@ def imgAutoCick(tempFile, whatDo, debug=False):
 
  
     gray = cv2.imread("screenshot.png",0)
- 
+    
     img_template = cv2.imread(tempFile,0)
 
     w, h = img_template.shape[::-1]
@@ -51,10 +55,14 @@ def imgAutoCick(tempFile, whatDo, debug=False):
     whatDo(x)
 
 def measurer_bot(): # Acting list images from google sheet
-    imgAutoCick("7W82497\A\\a.jpg", pyautogui.doubleClick)
-    imgAutoCick("7W82497\A\\b.jpg", pyautogui.rightClick)
-    imgAutoCick("7W82497\B\\a.jpg", pyautogui.doubleClick)
-    imgAutoCick("7W82497\B\\b.jpg", pyautogui.rightClick)
+    imgAutoCick("7M71906\Front\A\\a.jpg", pyautogui.doubleClick)
+    imgAutoCick("7M71906\Front\A\\b.jpg", pyautogui.rightClick)
+    imgAutoCick("7M71906\Front\B\\a.jpg", pyautogui.doubleClick)
+    imgAutoCick("7M71906\Front\B\\b.jpg", pyautogui.rightClick)
+    imgAutoCick("7M71906\Front\C\\a.jpg", pyautogui.doubleClick)
+    imgAutoCick("7M71906\Front\C\\b.jpg", pyautogui.rightClick)
+    imgAutoCick("7M71906\Front\D\\a.jpg", pyautogui.doubleClick)
+    imgAutoCick("7M71906\Front\D\\b.jpg", pyautogui.rightClick)
 if __name__=="__main__":
     measurer_bot()
 

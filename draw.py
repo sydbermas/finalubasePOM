@@ -36,7 +36,7 @@ class DrawLineWidget(object):
 
             # Draw line
             cv2.line(self.clone, self.image_coordinates[0], self.image_coordinates[1], (0,0,0), 1)
-            cv2.putText(self.clone,("POMID:"+str(round(dist,2))+"inches"),(self.image_coordinates[0]),cv2.FONT_HERSHEY_SIMPLEX,0.4,(0,0,0),1)
+            cv2.putText(self.clone,("POMID:"+str(round(dist,2))+"inches"),(self.image_coordinates[1]),cv2.FONT_HERSHEY_SIMPLEX,0.4,(0,0,0),1)
             cv2.imshow("AutoMeasure", self.clone)
              
 
@@ -63,9 +63,5 @@ if __name__ == '__main__':
         if key == ord(' '):
             cv2.destroyWindow("AutoMeasure")
             break
-        
-        
-        
-            
 
 
